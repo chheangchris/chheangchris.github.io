@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<!--
+	Alpha by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Pipelines and Databases in Azure</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<h1><a href="index.html">Chris Chheang - Data Analyst Portfolio</a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">Home</a></li>
+						
+					</nav>
+				</header>
+
+			<!-- Main -->
+				<section id="main" class="container">
+					<header>
+						<h2>Pipelines and Databases in Azure</h2>
+						<p>I leverage Apache Spark, Azure Databricks, Data Build Tool, and Microsoft Azure for data ingestion into the lakehouse, and utilize Databricks for data transformation.</p>
+					</header>
+
+					<ul class="actions special">
+						<li><a href="https://github.com/chheangchris/Portfolio/tree/main/AzureProject/medallion_spark" target="_blank" class="button primary">View GitHub</a></li>
+					</ul>
+
+					<div class="box">
+						<span class="image featured"><img src="images/azure.jpg" alt="" /></span>
+						<h3>The Containers</h3>
+						<p>In a lakehouse architecture for data management, the use of the bronze, silver, and gold layers ensures that our data is handled effectively from its raw form to its use in analytics. The bronze layer stores raw data straight from its sources, keeping it intact and preserving its original state. This layer is crucial for maintaining data lineage and ensuring I can always trace back to where our data originated. The silver layer comes next, where data is cleaned, transformed, and structured for analysis. Here, I focus on improving data quality and preparing it for further processing. Finally, the gold layer houses refined and enriched data that's optimized for business intelligence and decision-making. It includes metadata and context that make the data reliable and easy to use for various analytical purposes. Together, these layers ensure that our data remains accurate, accessible, and valuable throughout its lifecycle within our organization.</p>
+						<span class="image featured"><img src="images/medcontainers.jpg" alt="" /></span>
+						<div class="row">
+							<div class="row-6 row-12-mobilep">
+								<h3>The Pipeline</h3>
+								<p>I've implemented an Azure Data Factory (ADF) pipeline to automate our data ingestion workflow. The pipeline begins by utilizing the lookup activity in ADF, which enables us to dynamically fetch metadata about all relevant tables from our sample data sources. Once the lookup activity completes its task, the pipeline proceeds to the next stage which is data copying. Here, I leverage ADF's copy activity to extract data from the identified tables and load it into our bronze layer.</p>
+							</div>
+							<div class="row-6 row-12-mobilep">
+								<h3>Creating and mounting the scope with databricks</h3>
+								<p>The next step was creating a secret scope in Azure Databricks. This scope serves as a secure repository for storing and managing sensitive information such as credentials and connection strings. Once the secret scope was established, I proceeded to mount it onto the respective bronze, silver, and gold data folders within Azure Databricks. With the secret scope successfully mounted, I can now conveniently reference these secrets in my notebooks and pipelines using predefined paths. This setup not only enhances security by avoiding direct exposure of sensitive data in my code but also streamlines the integration of secure credentials into my data processing pipeline. Now, I'm ready to seamlessly incorporate this configuration into my pipeline logic, including integrating it into my ForEach loop for efficient and secure data operations. After this, I am going to write some code to dump the data into our DataBricks.</p>
+							</div>
+							<span class="image featured"><img src="images/code.jpg" alt="" /></span>
+							<div class="row-6 row-12-mobilep">
+								<h3>Using DBT for data manipulation</h3>
+								<p>Now I begin this by creating the snapshots. Creating snapshots serves as a foundational step in our data pipeline strategy, enabling us to meticulously track and document the evolution of our data over time. These snapshots capture the exact state of our data at specific points in its lifecycle. Once these snapshots are created, they populate our silver layer within our data architecture. With the silver layer populated by our snapshots, it signifies that our data is now primed for major transformations. The folders for these files can be found in the github linked above or below.</p>
+								<span class="image featured"><img src="images/code1.jpg" alt="" /></span>
+								<span class="image featured"><img src="images/code2.jpg" alt="" /></span>
+							</div>
+
+						</div>
+					</div>
+				</section>
+
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
